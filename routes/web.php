@@ -20,17 +20,21 @@ Route::get('/', function () {
 */
 //Route::view('/','welcome');
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "title" => "About"
+    ]);
 });
 /*
 Route::get('/contact', function () {
     return view('contact');
 });
 */
-Route::get('/contact',[ContactController::class,'contact']);
+Route::get('/contact', [ContactController::class, 'contact']);
 
-Route::post('/send-message',[ContactController::class,'sendEmail'])->name('contact.send');
+Route::post('/send-message', [ContactController::class, 'sendEmail'])->name('contact.send');

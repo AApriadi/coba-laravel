@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function contact()
+    public function contact(Request $title)
     {
-        return view('contact');
+        return view('contact', [
+            "title" => "Contact"
+        ]);
     }
 
     public function sendEmail(Request $request)
@@ -23,6 +25,6 @@ class ContactController extends Controller
         ];
 
         Mail::to('mailserverdedot@gmail.com')->send(new ContactMail($details));
-        return back()->with('message_sent','Form submission successful!');
+        return back()->with('message_sent', 'Form submission successful!');
     }
 }
