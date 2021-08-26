@@ -6,7 +6,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Simple Web | {{$title}}</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -16,18 +16,32 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
         rel="stylesheet" type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="../styles.css" rel="stylesheet"/>
 </head>
 <body>
 @include('layouts.navbar')
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../img/{{ $img }}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Sample</h1>
-                    <span class="subheading">A Simple Web</span>
+                    @if ($title==="Home")
+                        <h1>Sample</h1>
+                        <span class="subheading">A Simple Web</span>
+                    @elseif ($title==="About")
+                        <h1>About</h1>
+                        <span class="subheading">This is what i do</span>
+                    @elseif ($title==="Blog")
+                        <h1>Blog</h1>
+                        <span class="subheading">My Blog</span>
+                    @elseif ($title==="Single Post")
+                        <h1>Single Post</h1>
+                        <span class="subheading">Single Post</span>
+                    @elseif ($title==="Contact")
+                        <h1>Contact</h1>
+                        <span class="subheading">Get in touch</span>
+                    @endif
                 </div>
             </div>
         </div>
@@ -78,6 +92,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="scripts.js"></script>
+<script src="../scripts.js"></script>
 </body>
 </html>

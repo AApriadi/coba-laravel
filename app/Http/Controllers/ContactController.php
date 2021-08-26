@@ -11,7 +11,8 @@ class ContactController extends Controller
     public function contact(Request $title)
     {
         return view('contact', [
-            "title" => "Contact"
+            "title" => "Contact",
+            "img" => "contact-bg.jpg"
         ]);
     }
 
