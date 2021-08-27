@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function contact(Request $title)
+    public function contact()
     {
         return view('contact', [
             "title" => "Contact",

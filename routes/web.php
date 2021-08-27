@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,59 +34,10 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-    $blog_posts = [
-        [
-            "title" => "Judul 1",
-            "slug" => "judul-1",
-            "author" => "Dedot",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, at dicta labore possimus quas rem repellat repudiandae. Aspernatur eos facilis inventore labore maiores nihil, odit perferendis vel! Accusamus deserunt ducimus eius facilis illo ipsum magnam maxime ut voluptatem voluptates. At culpa enim eos nihil nostrum quaerat quidem quisquam sequi suscipit vitae. Dolore ipsum laudantium magni maxime natus placeat similique sit."
-        ],
-        [
-            "title" => "Judul 2",
-            "slug" => "judul-2",
-            "author" => "Dedot",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, at dicta labore possimus quas rem repellat repudiandae. Aspernatur eos facilis inventore labore maiores nihil, odit perferendis vel! Accusamus deserunt ducimus eius facilis illo ipsum magnam maxime ut voluptatem voluptates. At culpa enim eos nihil nostrum quaerat quidem quisquam sequi suscipit vitae."
-        ]
-    ];
-
-    return view('blog', [
-        "title" => "Blog",
-        "img" => "post-bg.jpg",
-        "posts" => $blog_posts
-    ]);
-});
+Route::get('/blog', [PostController::class, 'blog']);
 
 //single blog post page
-Route::get('posts/{slug}', function ($slug) {
-    $blog_posts = [
-        [
-            "title" => "Judul 1",
-            "slug" => "judul-1",
-            "author" => "Dedot",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, at dicta labore possimus quas rem repellat repudiandae. Aspernatur eos facilis inventore labore maiores nihil, odit perferendis vel! Accusamus deserunt ducimus eius facilis illo ipsum magnam maxime ut voluptatem voluptates. At culpa enim eos nihil nostrum quaerat quidem quisquam sequi suscipit vitae. Dolore ipsum laudantium magni maxime natus placeat similique sit."
-        ],
-        [
-            "title" => "Judul 2",
-            "slug" => "judul-2",
-            "author" => "Dedot",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, at dicta labore possimus quas rem repellat repudiandae. Aspernatur eos facilis inventore labore maiores nihil, odit perferendis vel! Accusamus deserunt ducimus eius facilis illo ipsum magnam maxime ut voluptatem voluptates. At culpa enim eos nihil nostrum quaerat quidem quisquam sequi suscipit vitae."
-        ]
-    ];
-
-    $new_post = [];
-    foreach ($blog_posts as $post) {
-        if ($post["slug"] === $slug) {
-            $new_post = $post;
-        }
-    }
-
-    return view('post', [
-        "title" => "Single Post",
-        "img" => "post-sample-image.jpg",
-        "post" => $new_post
-    ]);
-});
+Route::get('/posts/{slug}', [PostController::class, 'post']);
 
 Route::get('/contact', [ContactController::class, 'contact']);
 

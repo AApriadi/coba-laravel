@@ -15,27 +15,27 @@
                     @csrf
                     <div class="form-floating">
                         <input class="form-control" name="name" type="text" placeholder="Enter your name..." required/>
-                        <label for="name">Name</label>
+                        <label>Name</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-floating">
                         <input class="form-control" name="email" type="email" placeholder="Enter your email..."
                                required/>
-                        <label for="email">Email address</label>
+                        <label>Email address</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                     </div>
                     <div class="form-floating">
                         <input class="form-control" name="phone" type="tel" maxlength="15"
                                placeholder="Enter your phone number..." required/>
-                        <label for="phone">Phone Number</label>
+                        <label>Phone Number</label>
                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
                         </div>
                     </div>
                     <div class="form-floating">
                     <textarea class="form-control" name="message" placeholder="Enter your message here..."
                               style="height: 12rem" required></textarea>
-                        <label for="message">Message</label>
+                        <label>Message</label>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
                     <br/>
@@ -45,6 +45,4 @@
             </div>
         </div>
     </div>
-    </div>
-    </main>
 @endsection
