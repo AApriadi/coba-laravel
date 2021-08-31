@@ -3,6 +3,8 @@
     <!-- Main Content-->
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-12">
+            <h2>Post User : {{ $user }}</h2>
+            <hr>
             @foreach($posts as $post)
                 <article class="mb-4 border-bottom">
                     <h4>

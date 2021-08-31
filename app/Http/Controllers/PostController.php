@@ -10,17 +10,18 @@ class PostController extends Controller
     {
         return view('blog', [
             "title" => "Blog",
-            "img" => "post-bg.jpg",
-            "posts" => Post::all()
+            "img" => "blog-bg.jpg",
+            //"posts" => Post::all()
+            "posts" => Post::latest()->get()
         ]);
     }
 
-    public function post($slug)
+    public function post(Post $post)
     {
         return view('post', [
-            "title" => "Single Post " . Post::find_title($slug),
-            "img" => "post-sample-image.jpg",
-            "post" => Post::find($slug)
+            "title" => "Single Post " . $post->title,
+            "img" => "post-bg.jpg",
+            "post" => $post
         ]);
     }
 }

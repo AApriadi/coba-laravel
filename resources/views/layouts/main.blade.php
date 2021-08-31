@@ -32,9 +32,15 @@
                     @elseif ($title==="Blog")
                         <h1>Blog</h1>
                         <span class="subheading">My Blog</span>
-                    @elseif ($title==="Single Post")
+                    @elseif (str_contains($title, "Single Post"))
                         <h1>Single Post</h1>
                         <span class="subheading">Single Post</span>
+                    @elseif (str_contains($title, "Post Categories"))
+                        <h1>Post Categories</h1>
+                        <span class="subheading">post categories</span>
+                    @elseif (str_contains($title, "Category"))
+                        <h1>Category</h1>
+                        <span class="subheading">category</span>
                     @elseif ($title==="Contact")
                         <h1>Contact</h1>
                         <span class="subheading">Get in touch</span>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,42 @@ Route::get('/about', function () {
 Route::get('/blog', [PostController::class, 'blog']);
 
 //single blog post page
-Route::get('/posts/{slug}', [PostController::class, 'post']);
+Route::get('/posts/{post:slug}', [PostController::class, 'post']);
+
+//categories
+Route::get('/categories', function () {
+    return view('categories', [
+        'title' => "Post Categories",
+        'categories' => Category::all(),
+        'img' => "category-bg.jpg"
+    ]);
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'title' => "Post Category : ".$category->name,
+        'posts' => $category->posts,
+        'img' => "category-bg.jpg",
+        'category' => $category->name
+    ]);
+});
+
+//authors
+Route::get('/authors', function () {
+    return view('authors', [
+        'title' => "Users",
+        'users' => User::all(),
+        'img' => "user-bg.jpg"
+    ]);
+});
+Route::get('/authors/{user:username}', function (User $user) {
+    return view('author', [
+        'title' => "User Post : ".$user->username,
+        'posts' => $user->posts,
+        'img' => "user-bg.jpg",
+        'user' => $user->name
+    ]);
+});
 
 Route::get('/contact', [ContactController::class, 'contact']);
 
