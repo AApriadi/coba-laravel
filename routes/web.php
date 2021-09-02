@@ -50,29 +50,12 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => "Post Category : ".$category->name,
-        'posts' => $category->posts,
-        'img' => "category-bg.jpg",
-        'category' => $category->name
-    ]);
-});
-
 //authors
 Route::get('/authors', function () {
     return view('authors', [
-        'title' => "Users",
+        'title' => "Post Authors",
         'users' => User::all(),
         'img' => "user-bg.jpg"
-    ]);
-});
-Route::get('/authors/{user:username}', function (User $user) {
-    return view('author', [
-        'title' => "User Post : ".$user->username,
-        'posts' => $user->posts,
-        'img' => "user-bg.jpg",
-        'user' => $user->name
     ]);
 });
 

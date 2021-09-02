@@ -29,7 +29,7 @@
                     @elseif ($title==="About")
                         <h1>About</h1>
                         <span class="subheading">This is what i do</span>
-                    @elseif ($title==="Blog")
+                    @elseif ($title==="All Post")
                         <h1>Blog</h1>
                         <span class="subheading">My Blog</span>
                     @elseif (str_contains($title, "Single Post"))
@@ -38,9 +38,15 @@
                     @elseif (str_contains($title, "Post Categories"))
                         <h1>Post Categories</h1>
                         <span class="subheading">post categories</span>
-                    @elseif (str_contains($title, "Category"))
+                    @elseif (str_contains($title, "in"))
                         <h1>Category</h1>
                         <span class="subheading">category</span>
+                    @elseif (str_contains($title, "Post Authors"))
+                        <h1>Post Authors</h1>
+                        <span class="subheading">post authors</span>
+                    @elseif (str_contains($title, "by"))
+                        <h1>Author</h1>
+                        <span class="subheading">author</span>
                     @elseif ($title==="Contact")
                         <h1>Contact</h1>
                         <span class="subheading">Get in touch</span>
@@ -63,7 +69,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="">
+                        <a href="#">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
@@ -71,7 +77,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="">
+                        <a href="#">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -79,7 +85,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="">
+                        <a href="#">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-github fa-stack-1x fa-inverse"></i>
