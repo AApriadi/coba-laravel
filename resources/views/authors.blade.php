@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     @foreach($users as $user)
-                        <div class="col-md-2">
+                        <div class="col-md-2 mb-3">
                             <a href="/blog?author={{ $user->username }}">
                                 <div class="card bg-dark">
                                     <img src="https://source.unsplash.com/500x500?selfie-no{{ $user->id }}" class="card-img" alt="{{ $user->name }}">

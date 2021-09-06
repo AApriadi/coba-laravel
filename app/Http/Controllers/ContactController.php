@@ -18,14 +18,14 @@ class ContactController extends Controller
 
     public function sendEmail(Request $request)
     {
-        $details = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message
-        ];
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email:dns|unique:users',
+            'phone' => 'required|numeric',
+            'message' => 'required'
+        ]);
 
-        Mail::to('mailserverdedot@gmail.com')->send(new ContactMail($details));
+        Mail::to('mailserverdedot@gmail.com')->send(new ContactMail($validatedData));
         return back()->with('message_sent', 'Form submission successful!');
     }
 }

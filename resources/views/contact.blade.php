@@ -6,41 +6,38 @@
             <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as
                 possible!</p>
             <div class="my-5">
-                @if(Session::has('message_sent'))
-                    <div class="alert alert-success" role="alert">
-                        Form submission successful!
+                @if(session()->has('message_sent'))
+                    <div class="alert alert-success alert-dismissible fade show fs-6" role="alert">
+                        {{ session('message_sent') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <form method="POST" action="{{route('contact.send')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('contact.send')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-floating">
-                        <input class="form-control" name="name" type="text" placeholder="Enter your name..." required/>
+                        <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="Enter your name..." required value="{{ old('name') }}"/>
                         <label>Name</label>
+                        @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" name="email" type="email" placeholder="Enter your email..."
-                               required/>
+                        <input class="form-control @error('email') is-invalid @enderror" name="email" type="email" placeholder="Enter your email..." required value="{{ old('email') }}"/>
                         <label>Email address</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" name="phone" type="tel" maxlength="15"
-                               placeholder="Enter your phone number..." required/>
+                        <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="tel" maxlength="15"
+                               placeholder="Enter your phone number..." required value="{{ old('phone') }}"/>
                         <label>Phone Number</label>
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                        </div>
+                        @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-floating">
-                    <textarea class="form-control" name="message" placeholder="Enter your message here..."
-                              style="height: 12rem" required></textarea>
+                    <textarea class="form-control @error('message') is-invalid @enderror" name="message" placeholder="Enter your message here..." style="height: 12rem" required>{{ old('message') }}</textarea>
                         <label>Message</label>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        @error('message')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-                    <br/>
                     <!-- Submit Button-->
-                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
+                    <button class="btn btn-primary mt-2 w-100" id="submitButton" type="submit">Send</button>
                 </form>
             </div>
         </div>

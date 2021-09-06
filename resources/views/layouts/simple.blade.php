@@ -20,43 +20,7 @@
 <body>
 @include('layouts.navbar')
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('../img/{{ $img }}')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    @if ($title==="Home")
-                        <h1>Sample</h1>
-                        <span class="subheading">A Simple Web</span>
-                    @elseif ($title==="About")
-                        <h1>About</h1>
-                        <span class="subheading">This is what i do</span>
-                    @elseif ($title==="All Post")
-                        <h1>Blog</h1>
-                        <span class="subheading">My Blog</span>
-                    @elseif (str_contains($title, "Single Post"))
-                        <h1>Single Post</h1>
-                        <span class="subheading">Single Post</span>
-                    @elseif (str_contains($title, "Post Categories"))
-                        <h1>Post Categories</h1>
-                        <span class="subheading">post categories</span>
-                    @elseif (str_contains($title, "in"))
-                        <h1>Category</h1>
-                        <span class="subheading">category</span>
-                    @elseif (str_contains($title, "Post Authors"))
-                        <h1>Post Authors</h1>
-                        <span class="subheading">post authors</span>
-                    @elseif (str_contains($title, "by"))
-                        <h1>Author</h1>
-                        <span class="subheading">author</span>
-                    @elseif ($title==="Contact")
-                        <h1>Contact</h1>
-                        <span class="subheading">Get in touch</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
+<header class="masthead" style="padding: 2em">
 </header>
 <!-- Main Content-->
 <main class="mb-4">

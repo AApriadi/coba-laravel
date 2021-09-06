@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
@@ -62,3 +65,22 @@ Route::get('/authors', function () {
 Route::get('/contact', [ContactController::class, 'contact']);
 
 Route::post('/send-message', [ContactController::class, 'sendEmail'])->name('contact.send');
+
+//login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+//logout
+Route::post('/logout', [LoginController::class, 'logout']);
+
+//register
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+//dashboard
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('dashboard/posts', DashboardPostController::class)->middleware('auth');
